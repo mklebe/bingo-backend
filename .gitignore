@@ -17,6 +17,9 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
+# System variables
+.env
+
 # IDEs and editors
 /.idea
 .project
