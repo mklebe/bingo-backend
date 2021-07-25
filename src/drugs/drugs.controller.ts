@@ -11,9 +11,9 @@ export class DrugsController {
     private readonly httpService: HttpService
   ) {}
 
-  @Get(':id')
+  @Get(':category/:artist/:song')
   async searchSong(@Param() params) {
-    return this.searchService.searchSong(params.id).then((result) => {
+    return this.searchService.searchSong(params.category, params.artist, params.song).then((result) => {
       if(result?.body?.hits?.hits) {
         return result.body.hits.hits.map((item) => item._source )
       } else {
