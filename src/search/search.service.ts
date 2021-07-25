@@ -18,6 +18,20 @@ export class SearchService {
       })
   }
 
+  async createIndex() {
+    return this.elasticsearchService.index({
+      index: 'top100',
+      type: 'document',
+      id: '1',
+      body: {
+        placement: 0,
+        song: '',
+        artist: 'Dummy Data',
+        category: 'none'
+      }
+    })
+  }
+
   async searchSong( artist: string ): Promise<any> {
 
     return this.elasticsearchService.search({ 
