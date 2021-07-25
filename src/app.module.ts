@@ -36,7 +36,6 @@ export class AppModule implements OnModuleInit {
   }
 
   constructor(
-    private readonly searchService: SearchService,
-    private readonly httpService: HttpService
+    private readonly searchService: SearchService
   ) { }
 }

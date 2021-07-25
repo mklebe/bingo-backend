@@ -40,22 +40,16 @@ export class SearchService {
   }
 
   async index80sList() {
-    const bulk = [];
-    songlist80s.lines.map(( song ) => {
-      bulk.push({index: {}})
-      bulk.push(Object.assign(song, {category: 'Top100Eighties'}));
-    })
-    this.elasticsearchService.bulk({
-      index: 'top100',
-      body: bulk,
-    }).catch((e) => {
-      console.log(e)
-    });
+    this.bulkSend(songlist80s.lines)
   }
 
   async indexDrugList() {
+    this.bulkSend(songlistDrugs.lines)
+  }
+
+  private bulkSend( batch: Array<any> ) {
     const bulk = [];
-    songlistDrugs.lines.map(( song ) => {
+    batch.map(( song ) => {
       bulk.push({index: {}})
       bulk.push(Object.assign(song, {category: 'Top100Drugs'}));
     })
