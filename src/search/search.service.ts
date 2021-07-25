@@ -11,25 +11,11 @@ export class SearchService {
 
   async dropIndex(): Promise<any> {
     return this.elasticsearchService.indices.delete({
-      index: '_all'
+      index: 'top100'
     })
       .catch(() => {
         console.log('### Could not drop indicies... continue... ###')
       })
-  }
-
-  async createIndex() {
-    return this.elasticsearchService.index({
-      index: 'top100',
-      type: 'document',
-      id: '1',
-      body: {
-        placement: 0,
-        song: '',
-        artist: 'Dummy Data',
-        category: 'none'
-      }
-    })
   }
 
   async searchSong( category: string, artist: string, song: string ): Promise<any> {
