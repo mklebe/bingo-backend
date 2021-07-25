@@ -249,7 +249,7 @@ export const songlist80s: Board = {
     },
     {
       placement: 53,
-      artist: "MOT�RHEAD",
+      artist: "MOTÖRHEAD",
       song: "Ace Of Spades"
     },
     {
@@ -260,7 +260,7 @@ export const songlist80s: Board = {
     {
       placement: 51,
       artist: "GRAUZONE",
-      song: "Eisb�r"
+      song: "Eisbär"
     },
     {
       placement: 50,
