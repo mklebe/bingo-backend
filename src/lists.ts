@@ -9,6 +9,512 @@ export interface Board {
   lines: Array<BoardLineItem>;
 };
 
+export const songlist80s: Board = {
+  name: '',
+  lines: [
+    {
+      placement: 100,
+      artist: "Whitney Houston",
+      song: "The Greatest Love Of All"
+    },
+    {
+      placement: 99,
+      artist: "Toni Basil",
+      song: "Mickey"
+    },
+    {
+      placement: 98,
+      artist: "Afrika Bambaataa & The Soul Sonic Force",
+      song: "Planet Rock"
+    },
+    {
+      placement: 97,
+      artist: "Cyndi Lauper",
+      song: "Time After Time"
+    },
+    {
+      placement: 96,
+      artist: "Joan Jett & The Blackhearts",
+      song: "I Love Rock'n'Roll"
+    },
+    {
+      placement: 95,
+      artist: "TUXEDOMOON",
+      song: "No Tears"
+    },
+    {
+      placement: 94,
+      artist: "ECHO & THE BUNNYMEN",
+      song: "The Killing Moon"
+    },
+    {
+      placement: 93,
+      artist: "Ideal",
+      song: "Blaue Augen"
+    },
+    {
+      placement: 92,
+      artist: "LAURIE ANDERSON",
+      song: "O Superman"
+    },
+    {
+      placement: 91,
+      artist: "The Gun Club",
+      song: "Sex Beat"
+    },
+    {
+      placement: 90,
+      artist: "Tiffany",
+      song: "I think we're alone now"
+    },
+    {
+      placement: 89,
+      artist: "Eric B. & Rakim",
+      song: "Paid in full"
+    },
+    {
+      placement: 88,
+      artist: "R.E.M.",
+      song: "It's The End Of The World As We Know It (And I Feel Fine)"
+    },
+    {
+      placement: 87,
+      artist: "Madonna",
+      song: "Material Girl"
+    },
+    {
+      placement: 86,
+      artist: "Depeche Mode",
+      song: "Just Can't Get Enough"
+    },
+    {
+      placement: 85,
+      artist: "Frankie Goes To Hollywood",
+      song: "The Power of love"
+    },
+    {
+      placement: 84,
+      artist: "Prince",
+      song: "Raspberry Beret"
+    },
+    {
+      placement: 83,
+      artist: "New Order",
+      song: "Age Of Consent"
+    },
+    {
+      placement: 82,
+      artist: "Cyndi Lauper",
+      song: "Girls Just Want To Have Fun"
+    },
+    {
+      placement: 81,
+      artist: "Pankow",
+      song: "Inge Pawelczik"
+    },
+    {
+      placement: 80,
+      artist: "Tears For Fears",
+      song: "Everybody Wants To Rule The World"
+    },
+    {
+      placement: 79,
+      artist: "THE GO-BETWEENS",
+      song: "Streets Of Your Town"
+    },
+    {
+      placement: 78,
+      artist: "a-ha",
+      song: "The sun always shines on TV"
+    },
+    {
+      placement: 77,
+      artist: "Wipers",
+      song: "When It's Over"
+    },
+    {
+      placement: 76,
+      artist: "Pet Shop Boys",
+      song: "Always On My Mind"
+    },
+    {
+      placement: 75,
+      artist: "JOACHIM WITT",
+      song: "Goldener Reiter"
+    },
+    {
+      placement: 74,
+      artist: "Paul Simon",
+      song: "You Can Call Me Al"
+    },
+    {
+      placement: 73,
+      artist: "Dexys Midnight Runners",
+      song: "Come On Eileen"
+    },
+    {
+      placement: 72,
+      artist: "VIOLENT FEMMES",
+      song: "Blister in the Sun"
+    },
+    {
+      placement: 71,
+      artist: "Depeche Mode",
+      song: "People Are People"
+    },
+    {
+      placement: 70,
+      artist: "The Cure",
+      song: "Pictures Of You"
+    },
+    {
+      placement: 69,
+      artist: "The Cure",
+      song: "Boys Don't Cry"
+    },
+    {
+      placement: 68,
+      artist: "Neneh Cherry",
+      song: "Buffalo Stance"
+    },
+    {
+      placement: 67,
+      artist: "Rick Astley",
+      song: "Never Gonna Give You Up"
+    },
+    {
+      placement: 66,
+      artist: "Tracy Chapman",
+      song: "Talkin' bout A Revolution"
+    },
+    {
+      placement: 65,
+      artist: "KILLING JOKE",
+      song: "Eighties"
+    },
+    {
+      placement: 64,
+      artist: "RUN-D.M.C.vs. Aerosmith",
+      song: "Walk This Way"
+    },
+    {
+      placement: 63,
+      artist: "Prince & The Revolution",
+      song: "When Doves Cry (long version)"
+    },
+    {
+      placement: 62,
+      artist: "Tom Petty & The Heartbreakers",
+      song: "Free Falling"
+    },
+    {
+      placement: 61,
+      artist: "Bruce Springsteen",
+      song: "Born In The U.S.A."
+    },
+    {
+      placement: 60,
+      artist: "THE JESUS AND MARY CHAIN",
+      song: "Just like Honey"
+    },
+    {
+      placement: 59,
+      artist: "Fleetwood Mac",
+      song: "Everywhere (Remastered)"
+    },
+    {
+      placement: 58,
+      artist: "BAUHAUS",
+      song: "Bela Lugosi's dead"
+    },
+    {
+      placement: 57,
+      artist: "THE CURE",
+      song: "Close to me"
+    },
+    {
+      placement: 56,
+      artist: "The Cure",
+      song: "Lovesong"
+    },
+    {
+      placement: 55,
+      artist: "The Police",
+      song: "Every Breath You Take"
+    },
+    {
+      placement: 54,
+      artist: "Puhdys",
+      song: "Jahreszeiten"
+    },
+    {
+      placement: 53,
+      artist: "MOT�RHEAD",
+      song: "Ace Of Spades"
+    },
+    {
+      placement: 52,
+      artist: "Marvin Gaye",
+      song: "Sexual Healing"
+    },
+    {
+      placement: 51,
+      artist: "GRAUZONE",
+      song: "Eisb�r"
+    },
+    {
+      placement: 50,
+      artist: "Madonna",
+      song: "Into the groove"
+    },
+    {
+      placement: 49,
+      artist: "FEHLFARBEN",
+      song: "Paul ist tot"
+    },
+    {
+      placement: 48,
+      artist: "VISAGE",
+      song: "Fade to grey"
+    },
+    {
+      placement: 47,
+      artist: "Jackson, Michael",
+      song: "Billie Jean"
+    },
+    {
+      placement: 46,
+      artist: "Tears For Fears",
+      song: "Shout (Extended)"
+    },
+    {
+      placement: 45,
+      artist: "THE SMITHS",
+      song: "Panic"
+    },
+    {
+      placement: 44,
+      artist: "Talk Talk",
+      song: "It's My Life"
+    },
+    {
+      placement: 43,
+      artist: "Malaria",
+      song: "Kaltes klares Wasser"
+    },
+    {
+      placement: 42,
+      artist: "The The",
+      song: "This Is The Day"
+    },
+    {
+      placement: 41,
+      artist: "KILLING JOKE",
+      song: "Love like Blood"
+    },
+    {
+      placement: 40,
+      artist: "THE SMITHS",
+      song: "Bigmouth Strikes Again"
+    },
+    {
+      placement: 39,
+      artist: "Frankie Goes To Hollywood",
+      song: "Relax"
+    },
+    {
+      placement: 38,
+      artist: "Eurythmics",
+      song: "Sweet Dreams (Are Made Of This)"
+    },
+    {
+      placement: 37,
+      artist: "The Clash",
+      song: "Rock The Casbah"
+    },
+    {
+      placement: 36,
+      artist: "N.W.A.",
+      song: "Straight Outta Compton"
+    },
+    {
+      placement: 35,
+      artist: "DAF (Deutsch-Amerikanische Freundschaft)",
+      song: "Der Mussolini"
+    },
+    {
+      placement: 34,
+      artist: "Dinosaur Jr",
+      song: "Freak Scene"
+    },
+    {
+      placement: 33,
+      artist: "MADONNA",
+      song: "Like a Prayer"
+    },
+    {
+      placement: 32,
+      artist: "Phil Collins",
+      song: "In the air tonight"
+    },
+    {
+      placement: 31,
+      artist: "Toto",
+      song: "Africa"
+    },
+    {
+      placement: 30,
+      artist: "DEAD KENNEDYS",
+      song: "Holiday in Cambodia"
+    },
+    {
+      placement: 29,
+      artist: "Prince",
+      song: "Sign O' The Times"
+    },
+    {
+      placement: 28,
+      artist: "a-ha",
+      song: "Take on me"
+    },
+    {
+      placement: 27,
+      artist: "Michael Jackson",
+      song: "Beat It"
+    },
+    {
+      placement: 26,
+      artist: "THE SPECIALS",
+      song: "Ghost Town"
+    },
+    {
+      placement: 25,
+      artist: "ABC",
+      song: "The Look Of Love"
+    },
+    {
+      placement: 24,
+      artist: "Pet Shop Boys",
+      song: "West End Girls"
+    },
+    {
+      placement: 23,
+      artist: "Bronski Beat",
+      song: "Smalltown Boy"
+    },
+    {
+      placement: 22,
+      artist: "Sonic Youth",
+      song: "Teenage Riot"
+    },
+    {
+      placement: 21,
+      artist: "The Cure",
+      song: "Just Like Heaven"
+    },
+    {
+      placement: 20,
+      artist: "Pixies",
+      song: "Where Is My Mind"
+    },
+    {
+      placement: 19,
+      artist: "Talk Talk",
+      song: "Such A Shame"
+    },
+    {
+      placement: 18,
+      artist: "Talking Heads",
+      song: "Once In A Lifetime"
+    },
+    {
+      placement: 17,
+      artist: "FUGAZI",
+      song: "Waiting Room"
+    },
+    {
+      placement: 16,
+      artist: "The Clash",
+      song: "Should I Stay Or Should I Go"
+    },
+    {
+      placement: 15,
+      artist: "Soft Cell",
+      song: "Tainted Love"
+    },
+    {
+      placement: 14,
+      artist: "Grandmaster Flash & The Furious Five",
+      song: "The Message"
+    },
+    {
+      placement: 13,
+      artist: "Michael Jackson",
+      song: "Thriller"
+    },
+    {
+      placement: 12,
+      artist: "David Bowie",
+      song: "Let's Dance"
+    },
+    {
+      placement: 11,
+      artist: "Queen feat. David Bowie",
+      song: "Under Pressure"
+    },
+    {
+      placement: 10,
+      artist: "NICK CAVE & THE BAD SEEDS",
+      song: "The Mercy Seat"
+    },
+    {
+      placement: 9,
+      artist: "The Smiths",
+      song: "How Soon Is Now"
+    },
+    {
+      placement: 8,
+      artist: "THE CURE",
+      song: "A Forest"
+    },
+    {
+      placement: 7,
+      artist: "The Smiths",
+      song: "There Is A Light That Never Goes Out"
+    },
+    {
+      placement: 6,
+      artist: "Journey",
+      song: "Don't stop believin'"
+    },
+    {
+      placement: 5,
+      artist: "Depeche Mode",
+      song: "Never Let Me Down Again"
+    },
+    {
+      placement: 4,
+      artist: "Kate Bush",
+      song: "Running Up That Hill"
+    },
+    {
+      placement: 3,
+      artist: "Prince",
+      song: "Purple Rain"
+    },
+    {
+      placement: 2,
+      artist: "New Order",
+      song: "Blue Monday (Original 12\\\" Version)"
+    },
+    {
+      placement: 1,
+      artist: "JOY DIVISION",
+      song: "Love Will Tear Us Apart"
+    }
+  ]
+}
+
 export const songlistDrugs: Board = {
   name: 'Flying High - Die 100 besten Drogen-Lieder',
   lines: [

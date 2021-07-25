@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ElasticsearchService } from '@nestjs/elasticsearch';
-import { BoardLineItem, songlistDrugs } from 'src/lists';
+import { BoardLineItem, songlist80s, songlistDrugs } from 'src/lists';
 
 
 @Injectable()
@@ -38,6 +38,20 @@ export class SearchService {
       index: 'top100',
       q: artist,
      })
+  }
+
+  async index80sList() {
+    const bulk = [];
+    songlist80s.lines.map(( song ) => {
+      bulk.push({index: {}})
+      bulk.push(Object.assign(song, {category: 'Top100Eighties'}));
+    })
+    this.elasticsearchService.bulk({
+      index: 'top100',
+      body: bulk,
+    }).catch((e) => {
+      console.log(e)
+    });
   }
 
   async indexDrugList() {
