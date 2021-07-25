@@ -26,6 +26,7 @@ const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL
 })
 export class AppModule implements OnModuleInit {
   async onModuleInit() {
+    
     console.log('### Create index ####')
     await this.searchService.createIndex()
     console.log('### Drop Old indicies ####')
