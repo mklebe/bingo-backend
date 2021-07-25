@@ -40,18 +40,18 @@ export class SearchService {
   }
 
   async index80sList() {
-    this.bulkSend(songlist80s.lines)
+    this.bulkSend(songlist80s.lines, 'Top100Eighties')
   }
 
   async indexDrugList() {
-    this.bulkSend(songlistDrugs.lines)
+    this.bulkSend(songlistDrugs.lines, 'Top100Drugs')
   }
 
-  private bulkSend( batch: Array<any> ) {
+  private bulkSend( batch: Array<any>, category: string ) {
     const bulk = [];
     batch.map(( song ) => {
       bulk.push({index: {}})
-      bulk.push(Object.assign(song, {category: 'Top100Drugs'}));
+      bulk.push(Object.assign(song, { category }));
     })
     this.elasticsearchService.bulk({
       index: 'top100',
