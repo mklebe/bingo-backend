@@ -10,12 +10,16 @@ export class SearchService {
   ) {}
 
   async dropIndex(): Promise<any> {
-    return this.elasticsearchService.indices.delete({
+    await this.elasticsearchService.indices.delete({
       index: 'top100'
     })
-      .catch(() => {
-        console.log('### Could not drop indicies... continue... ###')
-      })
+    .catch(() => {
+      console.log('### Could not drop indicies... continue... ###')
+    })
+
+    return this.elasticsearchService.indices.create({
+      index: 'top100'
+    })
   }
 
   async searchSong( category: string, artist: string, song: string ): Promise<any> {
