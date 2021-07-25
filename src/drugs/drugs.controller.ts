@@ -11,6 +11,17 @@ export class DrugsController {
     private readonly httpService: HttpService
   ) {}
 
+  @Get(':id')
+  async searchSong(@Param() params) {
+    return this.searchService.searchSong(params.id).then((result) => {
+      if(result?.body?.hits?.hits) {
+        return result.body.hits.hits.map((item) => item._source )
+      } else {
+        return {}
+      }
+    })
+  }
+
   @Get()
   async getAll() {
     return new Promise((resolve, reject) => {
