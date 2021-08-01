@@ -52,8 +52,9 @@ export class SearchService {
                 "match": {
                   artist: {
                     query: artist,
-                    operator: 'and',
-                    analyzer: 'stop'
+                    operator: 'or',
+                    analyzer: 'stop',
+                    minimum_should_match: '75%'
                   }
                 } 
               },
@@ -61,8 +62,9 @@ export class SearchService {
                 "match": { 
                   song: {
                     query: song,
-                    operator: 'and',
-                    analyzer: 'stop'
+                    operator: 'or',
+                    analyzer: 'stop',
+                    minimum_should_match: '75%'
                   }
                 }
               },
