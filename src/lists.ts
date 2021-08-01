@@ -10,7 +10,7 @@ export interface Board {
 };
 
 export const songlist80s: Board = {
-  name: '',
+  name: 'Top100Eighties',
   lines: [
     {
       placement: 100,
@@ -516,7 +516,7 @@ export const songlist80s: Board = {
 }
 
 export const songlistDrugs: Board = {
-  name: 'Flying High - Die 100 besten Drogen-Lieder',
+  name: 'Top100Drugs',
   lines: [
     { placement: 1, song: "Heroin", artist: "The Velvet Underground" },
     { placement: 2, song: "White Rabbit", artist: "Jefferson Airplaine" },

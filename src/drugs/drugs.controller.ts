@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Controller, Get, Param } from '@nestjs/common';
+import { Board, BoardLineItem } from 'src/lists';
 import { SearchService } from 'src/search/search.service';
 
 function getSongListUrl(start: string, end: string) {
@@ -29,19 +30,54 @@ export class DrugsController {
   async searchSong(@Param() params) {
     return this.searchService.searchSong(params.category, params.artist, params.song).then((result) => {
       if(result?.body?.hits?.hits) {
-        return result.body.hits.hits.map((item) => item )
+        return result.body.hits.hits.map((item) => item._source )
       } else {
         return {}
       }
     })
   }
 
+  @Get(':category/updateindex')
+  async updateCategoryIndex(@Param() params) {
+    const url = categoryUrl[params.category];
+
+    if( url ) {
+      this.searchService.deleteCategory( params.category )
+      const placements: BoardLineItem[] = await this.fetchCategoryFromRadioEins( url )
+      const board: Board = {
+        name: params.category,
+        lines: placements
+      }
+      return this.searchService.indexBoard(board);
+    } else {
+      return []
+    }
+  }
+
+  @Get(':category/search')
+  async searchByCategory(@Param() params) {
+    if( categoryUrl[params.category] ) {
+      return await this.searchService.searchSongByCategory(params.category).then((result) => {
+        if(result?.body?.hits?.hits) {
+          return result.body.hits.hits.map((item) => item._source )
+        } else {
+          return {}
+        }
+      })
+    } else {
+      return []
+    }
+  }
+
   @Get(':category')
   async getCategoryByName(@Param() params) {
-    return new Promise((resolve, reject) => {
       const catUrl: string = categoryUrl[params.category] || categoryUrl['Top100Eighties'] 
-      
-      this.httpService
+      return this.fetchCategoryFromRadioEins(catUrl)
+  }
+
+  private async fetchCategoryFromRadioEins( catUrl: string ): Promise<BoardLineItem[]> {
+    return new Promise((resolve, reject) => {
+    this.httpService
         .get(catUrl, {
           responseType: 'arraybuffer'
         })
@@ -63,7 +99,7 @@ export class DrugsController {
           })
           resolve(result);
         })
-    });
+      });
   }
 
   @Get()

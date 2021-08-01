@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ElasticsearchService } from '@nestjs/elasticsearch';
-import { BoardLineItem, songlist80s, songlistDrugs } from 'src/lists';
+import { Board, BoardLineItem, songlist80s, songlistDrugs } from 'src/lists';
 
 
 @Injectable()
@@ -22,6 +22,25 @@ export class SearchService {
     })
   }
 
+  async deleteCategory( category: string ): Promise<any> {
+    return this.elasticsearchService.deleteByQuery({
+      index: 'top100',
+      body: {
+        query: {
+          bool: {
+            must: {
+              "match": { category }
+            }
+          }
+        }
+      }
+    })
+  }
+
+  async indexBoard( board: Board ): Promise<any> {
+    this.bulkSend(board.lines, board.name);
+  }
+
   async searchSong( category: string, artist: string, song: string ): Promise<any> {
     return this.elasticsearchService.search({ 
       index: 'top100',
@@ -31,6 +50,22 @@ export class SearchService {
             must: [
               { "match": { artist } },
               { "match": { song } },
+              { "match": { category } }
+            ]
+          }
+        }
+      }
+     })
+  }
+
+  async searchSongByCategory( category: string): Promise<any> {
+    console.log( category )
+    return this.elasticsearchService.search({ 
+      index: 'top100',
+      body: {
+        query: {
+          bool: {
+            must: [
               { "match": { category } }
             ]
           }
