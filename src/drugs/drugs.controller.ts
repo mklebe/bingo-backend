@@ -24,7 +24,21 @@ export class DrugsController {
   constructor(
     private readonly searchService: SearchService,
     private readonly httpService: HttpService
-  ) {}
+  ) {
+    const url = categoryUrl['Top100Mobility'];
+
+    if( url ) {
+      this.searchService.deleteCategory( 'Top100Mobility' )
+      this.fetchCategoryFromRadioEins( url )
+        .then(( placements ) => {
+          const board: Board = {
+            name: 'Top100Mobility',
+            lines: placements
+          }
+          this.searchService.indexBoard(board);
+        })
+    }
+  }
 
   @Get(':category/:artist/:song')
   async searchSong(@Param() params) {
@@ -83,7 +97,6 @@ export class DrugsController {
         })
         .subscribe(( response ) => {
           let listScript: string = response.data.toString('latin1')
-          console.log(listScript)
           const top100Table = new RegExp('<table(.|\n)*?<\/table>')
           let currentPosition = 100;
   
