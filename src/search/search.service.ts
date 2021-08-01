@@ -42,14 +42,30 @@ export class SearchService {
   }
 
   async searchSong( category: string, artist: string, song: string ): Promise<any> {
-    return this.elasticsearchService.search({ 
+    return this.elasticsearchService.search({
       index: 'top100',
       body: {
         query: {
           bool: {
             must: [
-              { "match": { artist } },
-              { "match": { song } },
+              { 
+                "match": {
+                  artist: {
+                    query: artist,
+                    operator: 'and',
+                    analyzer: 'stop'
+                  }
+                } 
+              },
+              { 
+                "match": { 
+                  song: {
+                    query: song,
+                    operator: 'and',
+                    analyzer: 'stop'
+                  }
+                }
+              },
               { "match": { category } }
             ]
           }
@@ -62,6 +78,7 @@ export class SearchService {
     console.log( category )
     return this.elasticsearchService.search({ 
       index: 'top100',
+      size: 100,
       body: {
         query: {
           bool: {
