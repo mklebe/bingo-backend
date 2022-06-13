@@ -1,14 +1,16 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ElasticsearchModule } from '@nestjs/elasticsearch'
+import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { SearchService } from './search/search.service';
 import { DrugsController } from './drugs/drugs.controller';
 import { ScheduleModule } from '@nestjs/schedule';
-import { HttpModule, HttpService } from '@nestjs/axios';
+import { HttpModule } from '@nestjs/axios';
 
-require('dotenv').config()
-const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL
+import { config } from 'dotenv';
+config();
+
+const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL;
 
 @Module({
   imports: [
@@ -16,26 +18,20 @@ const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL
       node: ELASTIC_SEARCH_HOST,
     }),
     ScheduleModule.forRoot(),
-    HttpModule
+    HttpModule,
   ],
   controllers: [AppController, DrugsController],
-  providers: [
-    AppService,
-    SearchService,
-  ],
+  providers: [AppService, SearchService],
 })
 export class AppModule implements OnModuleInit {
   async onModuleInit() {
+    console.log('### Drop Old indicies ####');
+    await this.searchService.dropIndex().catch((e) => console.log(e));
 
-    console.log('### Drop Old indicies ####')
-    await this.searchService.dropIndex().catch((e) => console.log( e ));
-
-    console.log('### Create new Top100 Lists ####')
-    this.searchService.index80sList().catch((e) => console.log( e ));
-    this.searchService.indexDrugList().catch((e) => console.log( e ));
+    console.log('### Create new Top100 Lists ####');
+    this.searchService.index80sList().catch((e) => console.log(e));
+    this.searchService.indexDrugList().catch((e) => console.log(e));
   }
 
-  constructor(
-    private readonly searchService: SearchService
-  ) { }
+  constructor(private readonly searchService: SearchService) {}
 }
