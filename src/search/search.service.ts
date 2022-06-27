@@ -4,20 +4,28 @@ import { Board, songlist80s, songlistDrugs } from 'src/lists';
 
 @Injectable()
 export class SearchService {
-  constructor(private readonly elasticsearchService: ElasticsearchService) {}
+  constructor(private readonly elasticsearchService: ElasticsearchService) { }
 
   async dropIndex(): Promise<any> {
-    await this.elasticsearchService.indices
-      .delete({
-        index: 'top100',
-      })
-      .catch(() => {
-        console.log('### Could not drop indicies... continue... ###');
-      });
+    return this.elasticsearchService.indices
+      .exists({ index: 'top100' })
+      .then( async ({ body }) => {
+        console.log('##### Fooooooo', body)
+        if (body) {
+          await this.elasticsearchService.indices
+            .delete({
+              index: 'top100',
+            })
+        }
 
-    return this.elasticsearchService.indices.create({
-      index: 'top100',
-    });
+        return this.elasticsearchService.indices.create({
+          index: 'top100',
+        });
+      })
+      .catch( (e) => {
+        console.log('##### Error on dropping index')
+        console.log( e )
+      });
   }
 
   async deleteCategory(category: string): Promise<any> {

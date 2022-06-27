@@ -25,10 +25,8 @@ const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL;
 })
 export class AppModule implements OnModuleInit {
   async onModuleInit() {
-    console.log('### Drop Old indicies ####');
     await this.searchService.dropIndex().catch((e) => console.log(e));
 
-    console.log('### Create new Top100 Lists ####');
     this.searchService.index80sList().catch((e) => console.log(e));
     this.searchService.indexDrugList().catch((e) => console.log(e));
   }
