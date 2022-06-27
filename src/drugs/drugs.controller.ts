@@ -3,11 +3,10 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { Board, BoardLineItem } from 'src/lists';
 import { SearchService } from 'src/search/search.service';
 
+import { JSDOM } from 'jsdom';
 function getSongListUrl(start: string, end: string): string {
   return `https://playlist.funtip.de/playList.do?action=searching&remote=1&version=2&from=${start}&to=${end}&jsonp_callback=jQuery224044240703639644585_1627199132642&_=1627199132643`;
 }
-
-import { JSDOM } from 'jsdom';
 
 const categoryUrl: Record<string, string> = {};
 categoryUrl['Top100Family'] = getSongListUrl(
@@ -38,6 +37,32 @@ categoryUrl['Top100Instrumentals'] = getSongListUrl(
   '08-08-2021_09-00',
   '08-08-2021_19-00',
 );
+
+categoryUrl['Placeholder1'] = getSongListUrl(
+  '10-07-2022_09-00',
+  '10-07-2022_19-00',
+);
+categoryUrl['Placeholder2'] = getSongListUrl(
+  '17-07-2022_09-00',
+  '17-07-2022_19-00',
+);
+categoryUrl['Placeholder3'] = getSongListUrl(
+  '24-07-2022_09-00',
+  '24-07-2022_19-00',
+);
+categoryUrl['Placeholder4'] = getSongListUrl(
+  '31-07-2022_09-00',
+  '10-07-2022_19-00',
+);
+categoryUrl['Placeholder5'] = getSongListUrl(
+  '07-08-2022_09-00',
+  '07-08-2022_19-00',
+);
+categoryUrl['Placeholder6'] = getSongListUrl(
+  '14-08-2022_09-00',
+  '14-08-2022_19-00',
+);
+
 categoryUrl['Test'] = getSongListUrl('01-08-2021_06-00', '01-08-2021_08-00');
 
 @Controller('songlist')
