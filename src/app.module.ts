@@ -5,9 +5,11 @@ import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { SearchService } from './search/search.service';
 import { DrugsController } from './drugs/drugs.controller';
 import { ScheduleModule } from '@nestjs/schedule';
-import { HttpModule } from '@nestjs/axios';
+import { HttpModule, HttpService } from '@nestjs/axios';
 
 import { config } from 'dotenv';
+import { RadioEinsService } from './search/radioEins.service';
+import { categoryUrl } from './categories';
 config();
 
 const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL;
@@ -18,10 +20,10 @@ const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL;
       node: ELASTIC_SEARCH_HOST,
     }),
     ScheduleModule.forRoot(),
-    HttpModule,
+    HttpModule,    
   ],
   controllers: [AppController, DrugsController],
-  providers: [AppService, SearchService],
+  providers: [AppService, SearchService, RadioEinsService],
 })
 export class AppModule implements OnModuleInit {
   async onModuleInit() {
@@ -31,5 +33,7 @@ export class AppModule implements OnModuleInit {
     this.searchService.indexDrugList().catch((e) => console.log(e));
   }
 
-  constructor(private readonly searchService: SearchService) {}
+  constructor(
+    private readonly searchService: SearchService,
+  ) {}
 }
