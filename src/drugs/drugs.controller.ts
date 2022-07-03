@@ -38,29 +38,33 @@ categoryUrl['Top100Instrumentals'] = getSongListUrl(
   '08-08-2021_19-00',
 );
 
-categoryUrl['Placeholder1'] = getSongListUrl(
+categoryUrl['Top100Radio'] = getSongListUrl(
   '10-07-2022_09-00',
   '10-07-2022_19-00',
 );
-categoryUrl['Placeholder2'] = getSongListUrl(
+categoryUrl['Top100Sex'] = getSongListUrl(
   '17-07-2022_09-00',
   '17-07-2022_19-00',
 );
-categoryUrl['Placeholder3'] = getSongListUrl(
+categoryUrl['Top100NDW'] = getSongListUrl(
   '24-07-2022_09-00',
   '24-07-2022_19-00',
 );
-categoryUrl['Placeholder4'] = getSongListUrl(
+categoryUrl['Top100Frauen'] = getSongListUrl(
   '31-07-2022_09-00',
   '10-07-2022_19-00',
 );
-categoryUrl['Placeholder5'] = getSongListUrl(
+categoryUrl['Top100Clothes'] = getSongListUrl(
   '07-08-2022_09-00',
   '07-08-2022_19-00',
 );
-categoryUrl['Placeholder6'] = getSongListUrl(
+categoryUrl['Top100Rock'] = getSongListUrl(
   '14-08-2022_09-00',
   '14-08-2022_19-00',
+);
+categoryUrl['Top100Ninties'] = getSongListUrl(
+  '21-08-2022_09-00',
+  '21-08-2022_19-00',
 );
 
 categoryUrl['Test'] = getSongListUrl('01-08-2021_06-00', '01-08-2021_08-00');
