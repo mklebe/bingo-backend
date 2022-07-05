@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ElasticsearchService } from '@nestjs/elasticsearch';
-import { Board, songlist80s, songlistDrugs } from 'src/lists';
+import { Board } from 'src/lists';
 
 @Injectable()
 export class SearchService {

@@ -7,7 +7,7 @@ import { RadioEinsService } from 'src/search/radioEins.service';
 
 
 @Controller('songlist')
-export class SongList {
+export class SongListController {
   constructor(
     private readonly searchService: SearchService,
     private readonly radioEinsService: RadioEinsService,

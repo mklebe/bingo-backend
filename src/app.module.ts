@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { SearchService } from './search/search.service';
-import { SongList } from './songlist/songlist.controller';
+import { SongListController } from './songlist/songlist.controller';
 import { ScheduleModule } from '@nestjs/schedule';
 import { HttpModule, HttpService } from '@nestjs/axios';
 
@@ -21,7 +21,7 @@ const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL;
     ScheduleModule.forRoot(),
     HttpModule,    
   ],
-  controllers: [AppController, SongList],
+  controllers: [AppController, SongListController],
   providers: [AppService, SearchService, RadioEinsService],
 })
 export class AppModule implements OnModuleInit {
