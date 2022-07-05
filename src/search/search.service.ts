@@ -10,7 +10,6 @@ export class SearchService {
     return this.elasticsearchService.indices
       .exists({ index: 'top100' })
       .then( async ({ body }) => {
-        console.log('##### Fooooooo', body)
         if (body) {
           await this.elasticsearchService.indices
             .delete({
@@ -43,8 +42,9 @@ export class SearchService {
     });
   }
 
-  async indexBoard(board: Board): Promise<any> {
-    this.bulkSend(board.lines, board.name);
+  async indexBoard({lines, name}: Board): Promise<any> {
+    console.log('#### Bulk indexing:', name, lines.length)
+    return this.bulkSend(lines, name);
   }
 
   async searchSong(
@@ -101,27 +101,22 @@ export class SearchService {
     });
   }
 
-  async index80sList() {
-    this.bulkSend(songlist80s.lines, 'Top100Eighties');
-  }
-
-  async indexDrugList() {
-    this.bulkSend(songlistDrugs.lines, 'Top100Drugs');
-  }
-
-  private bulkSend(batch: Array<any>, category: string) {
+  private async bulkSend(batch: Array<any>, category: string): Promise<any> {
     const bulk = [];
+    if(batch.length === 0) {
+      return Promise.resolve();
+    }
     batch.map((song) => {
       bulk.push({ index: {} });
       bulk.push(Object.assign(song, { category }));
     });
-    this.elasticsearchService
+    return this.elasticsearchService
       .bulk({
         index: 'top100',
         body: bulk,
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.meta.body.error);
       });
   }
 }

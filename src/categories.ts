@@ -1,7 +1,7 @@
 function getSongListUrl(start: string, end: string): string {
     return `https://playlist.funtip.de/playList.do?action=searching&remote=1&version=2&from=${start}&to=${end}&jsonp_callback=jQuery224044240703639644585_1627199132642&_=1627199132643`;
-  }
-  
+}
+
 export const categoryUrl: Record<string, string> = {};
 categoryUrl['Top100Family'] = getSongListUrl(
     '27-06-2021_09-00',

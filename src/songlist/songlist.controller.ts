@@ -7,24 +7,11 @@ import { RadioEinsService } from 'src/search/radioEins.service';
 
 
 @Controller('songlist')
-export class DrugsController {
+export class SongList {
   constructor(
     private readonly searchService: SearchService,
     private readonly radioEinsService: RadioEinsService,
-  ) {
-    const url = categoryUrl['Top100Mobility'];
-
-    if (url) {
-      this.searchService.deleteCategory('Top100Mobility');
-      this.fetchCategoryFromRadioEins(url).then((placements) => {
-        const board: Board = {
-          name: 'Top100Mobility',
-          lines: placements,
-        };
-        this.searchService.indexBoard(board);
-      });
-    }
-  }
+  ) {}
 
   @Get(':category/:artist/:song')
   async searchSong(@Param() { artist, song, category }) {
@@ -77,15 +64,15 @@ export class DrugsController {
 
   @Get(':category')
   async getCategoryByName(@Param() params) {
-    const catUrl: string =
-      categoryUrl[params.category] || categoryUrl['Top100Eighties'];
-    return this.fetchCategoryFromRadioEins(catUrl);
+    const catName: string = params.category || 'Top100Eighties';
+
+    return this.fetchCategoryFromRadioEins(catName);
   }
 
   private async fetchCategoryFromRadioEins(
     catUrl: string,
   ): Promise<BoardLineItem[]> {
-    return this.radioEinsService.getBoardFromCategoryUrl(catUrl);
+    return (await this.radioEinsService.getBoardFromCategoryUrl(catUrl)).lines;
   }
 
   @Get()
