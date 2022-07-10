@@ -28,21 +28,16 @@ export class SongListController {
 
   @Get(':category/updateindex')
   async updateCategoryIndex(@Param() params) {
-    const url = categoryUrl[params.category];
-
-    if (url) {
-      this.searchService.deleteCategory(params.category);
-      const placements: BoardLineItem[] = await this.fetchCategoryFromRadioEins(
-        url,
-      );
-      const board: Board = {
-        name: params.category,
-        lines: placements,
-      };
-      return this.searchService.indexBoard(board);
-    } else {
-      return [];
-    }
+    
+    this.searchService.deleteCategory(params.category);
+    const placements: BoardLineItem[] = await this.fetchCategoryFromRadioEins(
+      params.category,
+    );
+    const board: Board = {
+      name: params.category,
+      lines: placements,
+    };
+    return this.searchService.indexBoard(board);
   }
 
   @Get(':category/search')
