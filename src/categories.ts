@@ -46,7 +46,7 @@ categoryUrl['Top100NDW'] = getSongListUrl(
 );
 categoryUrl['Top100Frauen'] = getSongListUrl(
     '31-07-2022_09-00',
-    '10-07-2022_19-00',
+    '31-07-2022_19-00',
 );
 categoryUrl['Top100Clothes'] = getSongListUrl(
     '07-08-2022_09-00',
