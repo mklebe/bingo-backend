@@ -10,6 +10,27 @@ export class RadioEinsService {
     private readonly httpService: HttpService,
     ) { }
 
+    private fixTop100RockList(inputLines: BoardLineItem[]): BoardLineItem[] {
+      let lines = [...inputLines];
+      lines.splice(21, 0, {
+        artist: 'Napalm Death',
+        placement: 79,
+        song: 'You Suffer'
+      })
+      lines = lines.map((item, index) => {
+        if(index >= 22) {
+          const result = {
+            ...item,
+            placement: item.placement-1,
+          }
+          return result
+        }
+        return item;
+      })
+
+      return lines
+    }
+
     getBoardFromCategoryUrl(categoryName: string): Promise<Board> {
       const catUrl = categoryUrl[categoryName];
       if (!catUrl) {
@@ -26,7 +47,10 @@ export class RadioEinsService {
             })
             .subscribe((response) => {
               const songListDocument = response.data.toString('latin1');
-              const lines: BoardLineItem[] = parseRadioPlaylist(songListDocument);
+              let lines: BoardLineItem[] = parseRadioPlaylist(songListDocument);
+              if(categoryName === 'Top100Rock') {
+                lines = this.fixTop100RockList(lines);
+              }     
               const board: Board = {
                 name: categoryName,
                 lines
