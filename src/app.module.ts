@@ -9,6 +9,7 @@ import { HttpModule, HttpService } from '@nestjs/axios';
 
 import { config } from 'dotenv';
 import { RadioEinsService } from './search/radioEins.service';
+import { top100Rock } from './top100Rock';
 config();
 
 const ELASTIC_SEARCH_HOST = process.env.SEARCHBOX_URL;
@@ -53,8 +54,7 @@ export class AppModule implements OnModuleInit {
       .then(( board ) => { this.searchService.indexBoard(board) })
     await this.radioEinsService.getBoardFromCategoryUrl('Top100Clothes')
       .then(( board ) => { this.searchService.indexBoard(board) })
-    await this.radioEinsService.getBoardFromCategoryUrl('Top100Rock')
-      .then(( board ) => { this.searchService.indexBoard(board) })
+    await this.searchService.indexBoard(top100Rock);
     await this.radioEinsService.getBoardFromCategoryUrl('Top100Ninties')
       .then(( board ) => { this.searchService.indexBoard(board) })
   }
